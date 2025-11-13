@@ -1,0 +1,29 @@
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-codegen-plugin</artifactId>
+      <version>${cxf.version}</version>
+      <executions>
+        <execution>
+          <id>generate-sources</id>
+          <phase>generate-sources</phase>
+          <goals>
+            <goal>wsdl2java</goal>
+          </goals>
+          <configuration>
+            <wsdlOptions>
+              <wsdlOption>
+                <wsdl>http://localhost:8080/services/hello?wsdl</wsdl>
+                <extraargs>
+                  <extraarg>-p</extraarg>
+                  <extraarg>http://api.cxf.acme.com/=com.acme.cxf.generated</extraarg>
+                </extraargs>
+              </wsdlOption>
+            </wsdlOptions>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
